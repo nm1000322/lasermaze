@@ -3,12 +3,14 @@ body{
 
 }
 .timer{
+  font-family: 'Roboto', sans-serif;
   text-align:center;
   font-size: 108px;
   color: white;
 
 }
 .leaderboard{
+  font-family: 'Roboto', sans-serif;
   font-size: 35px;
   text-align:center;
   color:white;
@@ -23,6 +25,7 @@ border-collapse: collapse
 
 }
 th{
+  font-family: 'Roboto', sans-serif;
   background-color: #0d0d0d;
 }
 tr:nth-of-type(even){
@@ -34,9 +37,11 @@ tr:nth-of-type(odd){
 
 }
 .name{
+  font-family: 'Roboto', sans-serif;
   text-align: center;
 }
 .nameInput{
+  font-family: 'Roboto', sans-serif;
   color:black;
   background-color:white;
 
@@ -45,9 +50,19 @@ input:focus{
   background-color:#0d0d0d;
 }
 .label{
+  font-family: 'Roboto', sans-serif;
   text-align: center;
   font-size: 25px;
   background-color: #0d0d0d;
   padding: 10px;
+}
+.nameSubmit{
+
+}
+.message{
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  font-size: 50px;
+  text-align:center;
 
 }

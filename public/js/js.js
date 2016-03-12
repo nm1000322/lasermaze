@@ -15,6 +15,7 @@ socket.on('leaderboard', function(leaderboard){
   });
   });
 socket.on('start', function(time){
+  $('.name').hide();
   if (time < 10){
     $('.stopwatch').html("0" + time);
   }
@@ -24,12 +25,14 @@ socket.on('start', function(time){
   console.log(time);
 });
 
-
+socket.on('win', function(){
+  $('.name').show();
+});
 
 
 socket.on('startMin', function(time){
   if (time < 10){
-    $('.stopwatchMiN').html("0" + time);
+    $('.stopwatchMin').html("0" + time);
   }
   else{
   $('.stopwatchMin').html(time);
@@ -39,6 +42,7 @@ socket.on('startMin', function(time){
 
 socket.on('startMil', function(time){
   if (time < 10){
+    $('.message').html('');
     $('.stopwatchMil').html("0" + time);
   }
   else{
@@ -47,17 +51,21 @@ socket.on('startMil', function(time){
   console.log(time);
 });
 
-$('.start').click(function(){
-  console.log("Sent!");
-  $.ajax({
-    method: "POST",
-    url: "/start"
-  });
+
+socket.on('game over', function(){
+  $('.message').html("Game Over! You tripped a laser!");
 
 });
 
 
+$('.start').click(function(){
+  console.log("Sent!");
 
+  $.ajax({
+    method: "POST",
+    url: "/start"
+  });
+});
 
 
 
@@ -84,9 +92,15 @@ socket.on('countdown', function(time){
 
 */
 
+$('.addLeader').click(function(){
+//  $('.addLeader').hide();
+  $('.name').show();
+
+});
+
 
 $('.stop').click(function(){
-  $('.name').show();
+
   $.ajax({
     method: "POST",
     url: "/stop"
@@ -103,6 +117,7 @@ $('.reset').click(function(){
 
 $('.name').submit(function(){
   $(".name").hide();
+//  $('.addLeader').show();
   socket.emit('name submit', $('.nameInput').val());
   $('.nameInput').val('');
   return false;

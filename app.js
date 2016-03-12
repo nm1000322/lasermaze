@@ -30,16 +30,21 @@ app.get('/', function(req, res){
 
 app.post('/stop', function(req, res){
   clearInterval(watch);
+  io.emit('win');
   watch = '';
-  res.redirect('.');
+  res.redirect('/');
 })
 
 app.post('/reset', function(req, res){
   clearInterval(watch);
+  time = 0
   timeSec = 0;
   timeMin = 0;
-  //io.emit('start');
-  res.render('index');
+  io.emit('startMil', time);
+  io.emit('start', timeSec);
+  io.emit('startMin', timeMin);
+  io.emit('game over');
+  res.redirect('/');
 });
 
 app.post('/start', function(req, res){
@@ -78,7 +83,6 @@ io.on('connection', function(socket){
     leaderboard.push(timeMin+ "." + timeSec + "." + time + ":" + name);
     leaderboard = leaderboard.sort();
     io.emit('leaderboard', leaderboard);
-    //leaderboard = leaderboard.reverse();
     timeSec = 0;
     timeMin = 0;
     time = 0
@@ -87,45 +91,7 @@ io.on('connection', function(socket){
     io.emit('startMil', time);
     console.log(leaderboard);
   });
-
-
-
-
-
-    });
-
-
-//
-/*  socket.on('start', function(times){
-
-    times = time
-
-  });*/
-
-
-
-
-/*
-  socket.on('join', function(name){
-    people[socket.id] = name;
-    var counter = 0;
-
-    setInterval(function(){
-      counter++
-      io.emit('countdown', counter)
-
-    }, 1000);
-
-    if (counter == 3){
-      clearInterval();
-    }
-    console.log(stopwatch.elapsed.seconds);
-    io.emit('name', people[socket.id]);
-  });
-
-*/
-
-
+});
 
 
 server.listen(3000, function (){
