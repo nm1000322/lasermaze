@@ -1,0 +1,53 @@
+body{
+  background-color: #0d0d0d;
+
+}
+.timer{
+  text-align:center;
+  font-size: 108px;
+  color: white;
+
+}
+.leaderboard{
+  font-size: 35px;
+  text-align:center;
+  color:white;
+  background-color: #1a1a1a;
+}
+.leaderHeader{
+  font-size: 40px;
+  color:white;
+}
+table{
+border-collapse: collapse
+
+}
+th{
+  background-color: #0d0d0d;
+}
+tr:nth-of-type(even){
+    background-color: black;
+    color: black;
+}
+tr:nth-of-type(odd){
+  background-color: #1a1a1a;
+
+}
+.name{
+  text-align: center;
+}
+.nameInput{
+  color:black;
+  background-color:white;
+
+}
+input:focus{
+  background-color:#0d0d0d;
+}
+.label{
+  text-align: center;
+  font-size: 25px;
+  background-color: #0d0d0d;
+  padding: 10px;
+
+}
