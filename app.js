@@ -20,6 +20,7 @@ var watch = '';
 var timeSec = 0;
 var timeMin = 0;
 var leaderboard = [];
+var isRunning = false;
 //End Global Varibles
 
 app.get('/', function(req, res){
@@ -29,6 +30,7 @@ app.get('/', function(req, res){
 
 
 app.post('/stop', function(req, res){
+  isRunning = false;
   clearInterval(watch);
   io.emit('win');
   watch = '';
@@ -36,6 +38,7 @@ app.post('/stop', function(req, res){
 })
 
 app.post('/reset', function(req, res){
+  isRunning = false;
   clearInterval(watch);
   time = 0
   timeSec = 0;
@@ -48,6 +51,8 @@ app.post('/reset', function(req, res){
 });
 
 app.post('/start', function(req, res){
+  if (isRunning == false){
+    isRunning = true;
   watch = setInterval(function(){
     time++;
     if(time==100){
@@ -65,6 +70,7 @@ app.post('/start', function(req, res){
     io.emit('start', timeSec);
     io.emit('startMin', timeMin);
 }, 10);
+}
 res.redirect('/');
 });
 

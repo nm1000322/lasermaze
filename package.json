@@ -6,8 +6,10 @@
   "dependencies": {
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "express-layout": "^0.1.0",
     "http": "0.0.0",
     "node-stopwatch": "0.0.1",
+    "socket.io": "^1.4.8",
     "socketio": "^1.0.0"
   },
   "main": "app.js",
